@@ -1,0 +1,13 @@
+[Unit]
+Description=IPTables rules
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/systemd-iptables.sh start
+ExecStop=/etc/systemd-iptables.sh stop
+ExecReload=/etc/systemd-iptables.sh restart
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
