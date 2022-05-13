@@ -63,6 +63,7 @@ Load_Rules () {
 	$IPTABLES -N PORT-SCAN
 	$IPTABLES -A PORT-SCAN -p tcp --tcp-flags SYN,ACK,FIN,RST RST -m limit --limit 1/s -j RETURN
 	$IPTABLES -A PORT-SCAN -j DROP
+	$IPTABLES -I INPUT -i docker0 -j ACCEPT
 }
 
 case $1 in
