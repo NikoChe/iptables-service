@@ -54,7 +54,10 @@ Load_Rules () {
 	#DNS
 	#$IPTABLES -A INPUT -p tcp --dport 53 -j ACCEPT
 	#$IPTABLES -A INPUT -p udp --dport 53 -j ACCEPT
-
+	#OpenVPN Client
+	$IPTABLES -A INPUT -p udp --dport 1194 -j ACCEPT 
+	#OpenVPN Admin
+	$IPTABLES -A INPUT -p tcp --dport 943 -j ACCEPT
 	#
 	$IPTABLES -A INPUT -j LOG --log-prefix "${IPV}Tables INPUT Dropped:"
 	# Forward chain
